@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Ize.HWiNFO64_Plugin;
+using SuchByte.MacroDeck.Plugins;
+using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.Reflection.Metadata;
-using System.Security.Policy;
-using System.Text;
 using System.Windows.Forms;
-using Ize.HWiNFO64_Plugin;
-using SuchByte.MacroDeck.Plugins;
 
 
 namespace HWiNFO64_Plugin
@@ -30,15 +24,11 @@ namespace HWiNFO64_Plugin
         {
             sensorsCountLabel.Text = "" + HWiNFO64Plugin.sensors;
 
-            var RefreshTime = SuchByte.MacroDeck.Plugins.PluginConfiguration.GetValue(HWiNFO64Plugin.Instance, "refreshTime");
-            if (RefreshTime != "")
-            {
-                refreshTimeInput.Value = int.Parse(RefreshTime);
-            }
-            else
-            {
-                refreshTimeInput.Value = 2000; //default
-            }
+            var refreshTimeFromRegistry = PluginConfiguration.GetValue(HWiNFO64Plugin.Instance, "refreshTime");
+            if (int.TryParse(refreshTimeFromRegistry, out var refreshTime) == false)
+                refreshTime = 2000; //default
+
+            refreshTimeInput.Value = refreshTime;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -48,7 +38,7 @@ namespace HWiNFO64_Plugin
 
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
-            SuchByte.MacroDeck.Plugins.PluginConfiguration.SetValue(HWiNFO64Plugin.Instance, "refreshTime", refreshTimeInput.Value.ToString());
+            PluginConfiguration.SetValue(HWiNFO64Plugin.Instance, "refreshTime", refreshTimeInput.Value.ToString());
             MessageBox.Show("Settings Saved.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -70,17 +60,22 @@ namespace HWiNFO64_Plugin
         {
             listView1.Items.Clear();
             Microsoft.Win32.RegistryKey registryPath = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\HWiNFO64\VSB");
-            for (int i = 0; i < HWiNFO64Plugin.sensors; i++)
+            if (registryPath != null)
             {
-                ListViewItem item = new ListViewItem();
-                item.Text = i.ToString();
-                item.SubItems.Add(registryPath.GetValue("Sensor" + i).ToString());
-                item.SubItems.Add(registryPath.GetValue("Label" + i).ToString());
-                item.SubItems.Add(registryPath.GetValue("Value" + i).ToString());
-                item.SubItems.Add(registryPath.GetValue("ValueRaw" + i).ToString());
+                for (int i = 0; i < HWiNFO64Plugin.sensors; i++)
+                {
+                    var item = new ListViewItem
+                    {
+                        Text = i.ToString()
+                    };
+                    item.SubItems.Add(registryPath.GetValue("Sensor" + i).ToString());
+                    item.SubItems.Add(registryPath.GetValue("Label" + i).ToString());
+                    item.SubItems.Add(registryPath.GetValue("Value" + i).ToString());
+                    item.SubItems.Add(registryPath.GetValue("ValueRaw" + i).ToString());
 
-                item.Font = new Font(item.Font, FontStyle.Regular);
-                listView1.Items.Add(item);
+                    item.Font = new Font(item.Font, FontStyle.Regular);
+                    listView1.Items.Add(item);
+                }
             }
 
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
