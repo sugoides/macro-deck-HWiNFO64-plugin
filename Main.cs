@@ -48,7 +48,10 @@ namespace Ize.HWiNFO64_Plugin
             for (int i = 0; i < sensors; i++)
             {
                 //set all values as string cause HWiNFO64 already formatted them for us
-                VariableManager.SetValue("hwi64_" + (string)registryPath.GetValue("Label" + i), (string)registryPath.GetValue("Value" + i), VariableType.String, HWiNFO64Plugin.Instance, true);
+                var variableName = "hwi64_" + (string)registryPath.GetValue("Label" + i);
+                var regexSpecialChars = new Regex("[()]");
+                variableName = regexSpecialChars.Replace(variableName, string.Empty);
+                VariableManager.SetValue(variableName, (string)registryPath.GetValue("Value" + i), VariableType.String, HWiNFO64Plugin.Instance, true);
             }
         }
 
