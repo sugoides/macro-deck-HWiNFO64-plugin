@@ -2,7 +2,7 @@
   "type": "Plugin",
   "name": "Macro-Deck HWiNFO64 Plugin",
   "author": "Ize",
-  "repository" : "https://github.com/sugoides/Ize.HWiNFO644",
+  "repository" : "https://github.com/sugoides/Ize.HWiNFO64",
   "packageId": "Ize.HWiNFO64",
   "version": "1.0.2",
   "target-plugin-api-version": 35,
