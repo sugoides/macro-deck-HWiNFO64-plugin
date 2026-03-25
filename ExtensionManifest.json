@@ -2,10 +2,10 @@
   "type": "Plugin",
   "name": "Macro-Deck HWiNFO64 Plugin",
   "author": "Ize",
-  "repository" : "https://github.com/sugoides/Ize.HWiNFO64",
-  "packageId": "Ize.HWiNFO64",
-  "version": "1.0.2",
-  "target-plugin-api-version": 35,
+  "repository" : "https://github.com/sugoides/macro-deck-HWiNFO64-plugin",
+  "packageId": "sugoides.HWiNFO64",
+  "version": "1.0.0",
+  "target-plugin-api-version": 40,
   "target-macro-deck-version": "2.14.1",
   "dll": "HWiNFO64.dll"
 }

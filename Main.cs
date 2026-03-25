@@ -1,6 +1,7 @@
 ﻿using HWiNFO64_Plugin;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.MacroDeck.Variables;
+using System.Text.RegularExpressions;
 using System.Timers;
 
 namespace Ize.HWiNFO64_Plugin
@@ -51,7 +52,7 @@ namespace Ize.HWiNFO64_Plugin
                 var variableName = "hwi64_" + (string)registryPath.GetValue("Label" + i);
                 var regexSpecialChars = new Regex("[()]");
                 variableName = regexSpecialChars.Replace(variableName, string.Empty);
-                VariableManager.SetValue(variableName, (string)registryPath.GetValue("Value" + i), VariableType.String, HWiNFO64Plugin.Instance, true);
+                VariableManager.SetValue(variableName, (string)registryPath.GetValue("Value" + i), VariableType.String, HWiNFO64Plugin.Instance, (string[])null);
             }
         }
 

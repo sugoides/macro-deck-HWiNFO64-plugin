@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows7.0</TargetFramework>
-	<UseWindowsForms>true</UseWindowsForms>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
     <RootNamespace>HWiNFO64_Plugin</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Version>1.0.0</Version>
