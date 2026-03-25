@@ -1,4 +1,4 @@
-# Ize.HWiNFO64
+# sugoides.HWiNFO64
  Plugin to show system information from HWiNFO64
  
  ![Preview](hwinfo64.jpg)
