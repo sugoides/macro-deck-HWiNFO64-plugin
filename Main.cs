@@ -1,6 +1,7 @@
 ﻿using HWiNFO64_Plugin;
 using SuchByte.MacroDeck.Plugins;
 using SuchByte.MacroDeck.Variables;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Timers;
 
@@ -27,7 +28,11 @@ namespace Ize.HWiNFO64_Plugin
         {
             if (registryPath != null)
             {
-                sensors = registryPath.ValueCount / 5; //each sensor has 5 values in registry: Color, Label, Sensor, Value, ValueRaw; counting starts at 0
+                sensors = 0;
+                while (registryPath.GetValue("Label" + sensors) != null)
+                {
+                    sensors++;
+                }
             }
 
             var refreshTimeFromRegistry = PluginConfiguration.GetValue(HWiNFO64Plugin.Instance, "refreshTime");
@@ -53,6 +58,7 @@ namespace Ize.HWiNFO64_Plugin
                 var regexSpecialChars = new Regex("[()]");
                 variableName = regexSpecialChars.Replace(variableName, string.Empty);
                 VariableManager.SetValue(variableName, (string)registryPath.GetValue("Value" + i), VariableType.String, HWiNFO64Plugin.Instance, (string[])null);
+                VariableManager.SetValue(variableName + "_raw", registryPath.GetValue("ValueRaw" + i), VariableType.Float, HWiNFO64Plugin.Instance, (string[])null);
             }
         }
 
