@@ -6,8 +6,8 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>HWiNFO64_Plugin</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>1.0.0</Version>
-    <Authors>Ize</Authors>
+    <Version>1.0.2</Version>
+    <Authors>sugoides</Authors>
     <AssemblyName>HWiNFO64</AssemblyName>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
