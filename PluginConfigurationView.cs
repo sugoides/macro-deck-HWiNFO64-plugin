@@ -53,7 +53,7 @@ namespace HWiNFO64_Plugin
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("explorer", "https://github.com/Ize83/Ize.HWiNFO64");
+            Process.Start("explorer", "https://github.com/sugoides/macro-deck-HWiNFO64-plugin");
         }
 
         private void button1_Click(object sender, EventArgs e)
