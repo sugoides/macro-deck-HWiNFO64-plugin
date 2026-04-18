@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Timers;
 
-namespace Ize.HWiNFO64_Plugin
+namespace sugoides.HWiNFO64_Plugin
 {
     public class HWiNFO64Plugin : MacroDeckPlugin
     {

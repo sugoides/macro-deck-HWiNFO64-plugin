@@ -1,4 +1,4 @@
-﻿using Ize.HWiNFO64_Plugin;
+﻿using sugoides.HWiNFO64_Plugin;
 using SuchByte.MacroDeck.Plugins;
 using System;
 using System.Diagnostics;
