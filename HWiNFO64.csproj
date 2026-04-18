@@ -35,11 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EditorConfigFiles Remove="D:\Dev\Ize.HWiNFO64\.editorconfig" />
+    <EditorConfigFiles Remove="F:\Dev Stuff\macro-deck-HWiNFO64-plugin\.editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="D:\Dev\Ize.HWiNFO64\.editorconfig" />
+    <None Include="F:\Dev Stuff\macro-deck-HWiNFO64-plugin\.editorconfig" />
   </ItemGroup>
 
 
